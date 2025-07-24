@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TSEPL - Stainless Steel & Metal Container Manufacturing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c5aa0;
+        }
+
+        .logo::after {
+            content: ' STEEL';
+            font-size: 0.8rem;
+            color: #666;
+            font-weight: normal;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2c5aa0;
+        }
+
+        .cta-btn {
+            background: #2c5aa0;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .cta-btn:hover {
+            background: #1e3d6f;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a237e 0%, #3f51b5 50%, #757575 100%);
+            color: white;
+            text-align: center;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="20" y="20" width="60" height="60" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btn {
+            background: white;
+            color: #2c5aa0;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c5aa0;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 300px;
+            background: #e9ecef;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 1.2rem;
+        }
+
+        .about-text h3 {
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: #2c5aa0;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .service-card h3 {
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+        }
+
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            color: #2c5aa0;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Clients Section */
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .client-logo {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .testimonial-author {
+            color: #2c5aa0;
+            font-weight: bold;
+        }
+
+        /* Career Section */
+        .career-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+        }
+
+        .job-listing {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .job-info h3 {
+            color: #2c5aa0;
+            margin-bottom: 0.5rem;
+        }
+
+        .apply-btn {
+            background: #2c5aa0;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .apply-btn:hover {
+            background: #1e3d6f;
+        }
+
+        .resume-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2c5aa0;
+        }
+
+        .submit-btn {
+            background: #2c5aa0;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #1e3d6f;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 300px;
+            background: #e9ecef;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1e3d6f;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: #2c5aa0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .social-icon:hover {
+            background: #4a90e2;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #ccc;
+        }
+
+        /* Floating Elements */
+        .floating-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .floating-chat:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content,
+            .contact-content,
+            .career-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .services-grid,
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .job-listing {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">TSEPL</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#career">Career</a></li>
+                    <li><a href="#clients">Clients</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </nav>
+            <a href="#contact" class="cta-btn">Get a Quote</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Premium Stainless Steel & Metal Containers</h1>
+                    <p>Leading manufacturer of high-quality industrial containers, storage solutions, and custom metal fabrication for diverse industries</p>
+                    <a href="#about" class="hero-btn">Explore More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">About Us</h2>
+                <div class="about-content">
+                    <div class="about-image">
+                        [Company Image/Illustration]
+                    </div>
+                    <div class="about-text">
+                        <h3>Company Overview</h3>
+                        <p>TSEPL is a premier manufacturer of stainless steel and metal containers, specializing in industrial storage solutions, custom fabrication, and precision engineering for various sectors including food processing, pharmaceuticals, chemicals, and logistics.</p>
+                        
+                        <h3>Vision & Mission</h3>
+                        <p>Our vision is to be the leading manufacturer of premium quality metal containers in India. Our mission is to deliver durable, innovative, and cost-effective container solutions that meet the highest industry standards.</p>
+                        
+                        <h3>Manufacturing Excellence</h3>
+                        <p>With state-of-the-art manufacturing facilities and skilled craftsmen, we have established ourselves as a trusted name in metal container manufacturing since our inception.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section">
+            <div class="container">
+                <h2 class="section-title">Our Manufacturing Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🏭</div>
+                        <h3>Custom Container Manufacturing</h3>
+                        <p>Bespoke stainless steel and metal containers designed to your exact specifications and industry requirements.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">⚒️</div>
+                        <h3>Metal Fabrication</h3>
+                        <p>Precision metal fabrication services including cutting, welding, forming, and finishing of stainless steel components.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📐</div>
+                        <h3>Design & Engineering</h3>
+                        <p>Complete design and engineering services from concept to production, ensuring optimal functionality and durability.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🔧</div>
+                        <h3>Quality Testing</h3>
+                        <p>Rigorous quality control and testing procedures to ensure all products meet international standards and specifications.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🚚</div>
+                        <h3>Logistics Support</h3>
+                        <p>Complete logistics and delivery solutions with proper packaging to ensure safe transportation of manufactured products.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="section">
+            <div class="container">
+                <h2 class="section-title">Our Products</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">[Industrial Storage Container]</div>
+                        <div class="product-info">
+                            <h3>Industrial Storage Containers</h3>
+                            <p>Heavy-duty stainless steel containers for industrial storage, available in various sizes and configurations.</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">[Food Grade Container]</div>
+                        <div class="product-info">
+                            <h3>Food Grade Containers</h3>
+                            <p>FDA-approved stainless steel containers for food processing and storage with hygienic design features.</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">[Chemical Storage Tank]</div>
+                        <div class="product-info">
+                            <h3>Chemical Storage Tanks</h3>
+                            <p>Corrosion-resistant containers designed for safe storage of chemicals and hazardous materials.</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">[Transport Container]</div>
+                        <div class="product-info">
+                            <h3>Transport Containers</h3>
+                            <p>Durable metal containers optimized for transportation with secure locking mechanisms and weather protection.</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">[Pharmaceutical Container]</div>
+                        <div class="product-info">
+                            <h3>Pharmaceutical Containers</h3>
+                            <p>GMP-compliant stainless steel containers for pharmaceutical manufacturing and storage applications.</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">[Custom Fabrication]</div>
+                        <div class="product-info">
+                            <h3>Custom Metal Fabrication</h3>
+                            <p>Bespoke metal components and containers manufactured to your exact specifications and requirements.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clients & Testimonials Section -->
+        <section id="clients" class="section">
+            <div class="container">
+                <h2 class="section-title">Our Clients</h2>
+                <div class="clients-grid">
+                    <div class="client-logo">[Client Logo 1]</div>
+                    <div class="client-logo">[Client Logo 2]</div>
+                    <div class="client-logo">[Client Logo 3]</div>
+                    <div class="client-logo">[Client Logo 4]</div>
+                    <div class="client-logo">[Client Logo 5]</div>
+                    <div class="client-logo">[Client Logo 6]</div>
+                </div>
+                
+                <div class="testimonial">
+                    <p>"TSEPL's stainless steel containers have revolutionized our food processing operations. The quality and durability are exceptional, and their custom solutions perfectly meet our industry standards."</p>
+                    <div class="testimonial-author">
+                        <strong>Rajesh Kumar</strong><br>
+                        Production Manager, FoodTech Industries
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Section -->
+        <section id="career" class="section">
+            <div class="container">
+                <h2 class="section-title">Join Our Team</h2>
+                <div class="career-content">
+                    <div class="job-listings">
+                        <div class="job-listing">
+                            <div class="job-info">
+                                <h3>Production Engineer</h3>
+                                <p>Mumbai, Maharashtra</p>
+                            </div>
+                            <button class="apply-btn">Apply Now</button>
+                        </div>
+                        <div class="job-listing">
+                            <div class="job-info">
+                                <h3>Welding Specialist</h3>
+                                <p>Pune, Maharashtra</p>
+                            </div>
+                            <button class="apply-btn">Apply Now</button>
+                        </div>
+                        <div class="job-listing">
+                            <div class="job-info">
+                                <h3>Quality Control Inspector</h3>
+                                <p>Chennai, Tamil Nadu</p>
+                            </div>
+                            <button class="apply-btn">Apply Now</button>
+                        </div>
+                        <div class="job-listing">
+                            <div class="job-info">
+                                <h3>Manufacturing Supervisor</h3>
+                                <p>Bangalore, Karnataka</p>
+                            </div>
+                            <button class="apply-btn">Apply Now</button>
+                        </div>
+                    </div>
+                    
+                    <div class="resume-form">
+                        <h3>Upload Resume</h3>
+                        <form>
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Position Applied For</label>
+                                <input type="text" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Resume Upload</label>
+                                <input type="file" accept=".pdf,.doc,.docx">
+                            </div>
+                            <button type="submit" class="submit-btn">Submit Application</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="map-placeholder">[Google Map Embed]</div>
+                        
+                        <h3>Get in Touch</h3>
+                        <p><strong>Address:</strong><br>
+                        Plot No. 45, Industrial Estate<br>
+                        MIDC Area, Aurangabad<br>
+                        Maharashtra 431136, India</p>
+                        
+                        <p><strong>Phone:</strong><br>
+                        +91 98765 43210</p>
+                        
+                        <p><strong>Email:</strong><br>
+                        sales@tsepl.com<br>
+                        info@tsepl.com</p>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <form>
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Subject</label>
+                                <input type="text" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Message</label>
+                                <textarea rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#about">About Us</a>
+                    <a href="#services">Services</a>
+                    <a href="#products">Products</a>
+                    <a href="#career">Career</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Manufacturing</h3>
+                    <a href="#services">Custom Containers</a>
+                    <a href="#services">Metal Fabrication</a>
+                    <a href="#services">Quality Testing</a>
+                    <a href="#services">Design Engineering</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>Plot No. 45, Industrial Estate<br>
+                    MIDC Area, Aurangabad<br>
+                    Maharashtra 431136, India</p>
+                    <p>Phone: +91 98765 43210</p>
+                    <p>Email: sales@tsepl.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">t</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">ig</a>
+                    </div>
+                    <h3 style="margin-top: 2rem;">Newsletter</h3>
+                    <div class="form-group">
+                        <input type="email" placeholder="Enter your email" style="margin-bottom: 1rem;">
+                        <button class="submit-btn" style="padding: 0.5rem 1rem;">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 TSEPL. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919876543210" class="floating-chat" target="_blank">💬</a>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submissions
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Form submitted successfully! We will get back to you soon.');
+                this.reset();
+            });
+        });
+
+        // Apply button functionality
+        document.querySelectorAll('.apply-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                alert('Application process initiated! Please fill out the resume form.');
+                document.querySelector('.resume-form input[type="text"]').focus();
+            });
+        });
+    </script>
+</body>
+</html>
