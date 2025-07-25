@@ -266,6 +266,61 @@
             margin-bottom: 0.5rem;
         }
 
+        .view-more-section {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 2px dashed #dee2e6;
+        }
+
+        .view-more-title {
+            font-size: 1.5rem;
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+        }
+
+        .view-more-text {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .view-more-btn {
+            background: #2c5aa0;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .view-more-btn:hover {
+            background: #1e3d6f;
+        }
+
+        .additional-products {
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .additional-products.show {
+            display: grid;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         /* Clients Section */
         .clients-grid {
             display: grid;
@@ -671,6 +726,64 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Additional Products (Initially Hidden) -->
+                <div id="additionalProducts" class="additional-products">
+                    <div class="product-card">
+                        <div class="product-image">[Pressure Vessel]</div>
+                        <div class="product-info">
+                            <h3>Pressure Vessels</h3>
+                            <p>ASME-certified pressure vessels designed for high-pressure applications in various industrial processes.</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">[Heat Exchanger]</div>
+                        <div class="product-info">
+                            <h3>Heat Exchangers</h3>
+                            <p>Efficient stainless steel heat exchangers for thermal management in industrial applications.</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">[Mixing Tank]</div>
+                        <div class="product-info">
+                            <h3>Mixing Tanks & Reactors</h3>
+                            <p>Custom-designed mixing tanks and reactors with agitation systems for chemical processing.</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">[Storage Silo]</div>
+                        <div class="product-info">
+                            <h3>Storage Silos</h3>
+                            <p>Large-capacity stainless steel silos for bulk material storage with automated discharge systems.</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">[Clean Room Equipment]</div>
+                        <div class="product-info">
+                            <h3>Clean Room Equipment</h3>
+                            <p>Specialized stainless steel equipment designed for cleanroom environments and sterile processing.</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">[Piping Systems]</div>
+                        <div class="product-info">
+                            <h3>Piping Systems</h3>
+                            <p>Complete stainless steel piping solutions including fittings, valves, and custom configurations.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View More Section -->
+                <div class="view-more-section">
+                    <div class="view-more-title">Explore Our Complete Product Range</div>
+                    <div class="view-more-text">
+                        We manufacture a wide variety of specialized containers and equipment. 
+                        Discover pressure vessels, heat exchangers, mixing tanks, and more custom solutions.
+                    </div>
+                    <button id="viewMoreBtn" class="view-more-btn" onclick="toggleProducts()">
+                        View More Products
+                    </button>
+                </div>
             </div>
         </section>
 
@@ -889,6 +1002,25 @@
                 document.querySelector('.resume-form input[type="text"]').focus();
             });
         });
+
+        // View More Products functionality
+        function toggleProducts() {
+            const additionalProducts = document.getElementById('additionalProducts');
+            const viewMoreBtn = document.getElementById('viewMoreBtn');
+            
+            if (additionalProducts.classList.contains('show')) {
+                additionalProducts.classList.remove('show');
+                viewMoreBtn.textContent = 'View More Products';
+                viewMoreBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                additionalProducts.classList.add('show');
+                viewMoreBtn.textContent = 'View Less Products';
+                // Scroll to the first additional product after a small delay for animation
+                setTimeout(() => {
+                    additionalProducts.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 300);
+            }
+        }
     </script>
 </body>
 </html>
